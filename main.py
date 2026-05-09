@@ -6,16 +6,17 @@ import secrets
 
 app = FastAPI()
 
-# Supabase setup
+# Get environment variables
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 HF_TOKEN = os.getenv("HF_TOKEN")
 
+# Initialize Supabase
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 @app.get("/")
 def root():
-    return {"status": "Glitch AI is running"}
+    return {"status": "Glitch AI is running! 🔮"}
 
 @app.post("/generate-key")
 async def generate_key(email: str):
@@ -38,7 +39,7 @@ async def chat(message: str, authorization: str = Header(None)):
 User: yo
 Assistant: yo what's good
 
-User: what are you
+User: what are you  
 Assistant: just an ai thing talking to you
 
 User: are you smart
